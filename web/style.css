@@ -1,0 +1,145 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+body {
+    background-color:#8A51FC ;
+}
+.logo-dinheiro {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+main {
+    border-radius: 20px;
+    background: #F4F4F4;
+    width: 375px;
+    height: 712px;
+    margin: auto;
+    padding: 44px 24px 23px;
+}
+
+label {
+    color: #777777;
+    font-size: 14px;
+    font-weight: 400;
+    
+
+}
+select {
+    border-radius: 4px;
+    border: 1px solid #BBB;
+    background: #FFF;
+    height: 48px;
+    width: 100%;
+    margin-bottom: 24px;
+    appearance: none;
+    padding-left: 18px;
+    color: #555;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+input {
+    width: 327px;
+    height: 48px;
+    padding-left: 11px;
+    color: #555;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    border-radius: 4px;
+    border: 1px solid #BBB;
+    background: #FFF;
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.15);
+    }
+
+.ultima-label {
+    color: #777;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+
+    }
+button {
+    letter-spacing: 1px;
+    margin-top: 25px;
+    margin: 15px 0 0 0;
+    width: 327px;
+    height: 48px;  
+    background-color: #8A51FC; 
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+button:hover
+    {opacity: 0.8;}
+
+button:active
+    {opacity:0.6}
+
+section {
+    text-align: center;
+    padding: 12px 0;
+    width: 327px;
+    height: 300px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    border: 1px solid #772FD3;
+    margin-top: 36px;
+
+}
+
+.second-paragraphs {
+    color: #555;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 18px; /* 90% */
+}
+.first-div {
+    margin-bottom: 12px;
+}
+.second-div {
+    margin-top: 12px;
+}
+.real {
+    color:#777777;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 5px;
+}
+.dolar-american {
+    color:#777777;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 5px;
+}
+.seta {
+    color: #8A51FC;
+    width: 35px;
+    height: 49.939px;;
+}
+
+
+
+
+
+
+
+
+
+
