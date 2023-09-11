@@ -114,20 +114,14 @@ section {
 .second-div {
     margin-top: 12px;
 }
-.real {
+.currency {
     color:#777777;
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
     margin-bottom: 5px;
 }
-.dolar-american {
-    color:#777777;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
-    margin-bottom: 5px;
-}
+
 .seta {
     color: #8A51FC;
     width: 35px;
