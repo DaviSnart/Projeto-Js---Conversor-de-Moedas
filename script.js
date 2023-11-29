@@ -26,7 +26,7 @@ function convertValues() {
     }
 
     if (currencySelect.value == "libra") {
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
+        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
             style: "currency",
             currency: "GBP"
         }).format(inputCurrencyValue / libraToday)
