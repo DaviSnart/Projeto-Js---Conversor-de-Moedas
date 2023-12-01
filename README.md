@@ -11,6 +11,7 @@
     <li>Utilizei o .format para discernimento das moedas quando convertidas</li>
 </ul>
 <p>Obs: como é apens um projeto e não algo a ser utilizado por usuários dei um valor fictício para as moedas.</p>
-<img src=""/>
+    <h3>Mas aqui está a vizualização do projeto</h3>
+<img src="https://github.com/DaviSnart/Projeto-Js---Conversor-de-Moedas/blob/main/assets/printDoProjeto.png?raw=true"/>
   
 </h4>
