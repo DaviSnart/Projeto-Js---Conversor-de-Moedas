@@ -53,11 +53,11 @@ function changeCurrency() {
     }
     if (currencySelect.value == "euro") {
         currencyName.innerHTML = "Euro"
-        currencyImg.src = "../assets/Design sem nome 3.png"
+        currencyImg.src = "./assets/euro.png"
     }
     if (currencySelect.value == "libra") {
         currencyName.innerHTML = "Libra"
-        currencyImg.src = "../assets/libra 1.png"
+        currencyImg.src = "./assets/libra.png"
     }
 
     convertValues()
