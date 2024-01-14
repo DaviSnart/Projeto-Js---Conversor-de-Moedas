@@ -49,7 +49,7 @@ function changeCurrency() {
 
     if (currencySelect.value == "dolar") {
         currencyName.innerHTML = "Dólar americano"
-        currencyImg.src = "../assets/estados-unidos (1) 1.png"
+        currencyImg.src = "./assets/dolar.png"
     }
     if (currencySelect.value == "euro") {
         currencyName.innerHTML = "Euro"
