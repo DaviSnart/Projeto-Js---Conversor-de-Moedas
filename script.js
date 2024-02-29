@@ -6,9 +6,9 @@ function convertValues() {
     const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
     const currencyValueConverted = document.querySelector(".currency-value")
 
-    const dolarToday = 5.2
-    const euroToday = 6.2
-    const libraToday = 7.2
+    const dolarToday = 4.9
+    const euroToday = 5.4
+    const libraToday = 6.3
 
 
     if (currencySelect.value == "dolar") {
@@ -39,29 +39,63 @@ function convertValues() {
     }).format(inputCurrencyValue)//
 }
 
-//usamos o innerHTML pra pegar algo do html e dar um novo conteúdo a ele
-
-//TODO ESSE PROJETO ESTÁ DEBAIXO DO CONVERT BUTTON E DA MECÂNICA DE CLICAR
-
 function changeCurrency() {
-    const currencyName = document.getElementById("currency-name")
     const currencyImg = document.querySelector(".currency-img")
+    const currencyName = document.querySelector("#currency-name")
 
     if (currencySelect.value == "dolar") {
-        currencyName.innerHTML = "Dólar americano"
+        currencyName.innerHTML = "Dólar Americano"
         currencyImg.src = "./assets/dolar.png"
     }
+
     if (currencySelect.value == "euro") {
         currencyName.innerHTML = "Euro"
         currencyImg.src = "./assets/euro.png"
     }
+
     if (currencySelect.value == "libra") {
         currencyName.innerHTML = "Libra"
         currencyImg.src = "./assets/libra.png"
     }
 
     convertValues()
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//usamos o innerHTML pra pegar algo do html e dar um novo conteúdo a ele
+
+//TODO ESSE PROJETO ESTÁ DEBAIXO DO CONVERT BUTTON E DA MECÂNICA DE CLICAR
+
+// function changeCurrency() {
+//     const currencyName = document.getElementById("currency-name")
+//     const currencyImg = document.querySelector(".currency-img")
+
+//     if (currencySelect.value == "dolar") {
+//         currencyName.innerHTML = "Dólar americano"
+//         currencyImg.src = "./assets/dolar.png"
+//     }
+//     if (currencySelect.value == "euro") {
+//         currencyName.innerHTML = "Euro"
+//         currencyImg.src = "./assets/euro.png"
+//     }
+//     if (currencySelect.value == "libra") {
+//         currencyName.innerHTML = "Libra"
+//         currencyImg.src = "./assets/libra.png"
+//     }
+
+//     convertValues()
+// }
 
 
 currencySelect.addEventListener("change", changeCurrency)
