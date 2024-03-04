@@ -1,176 +1,192 @@
-const convertButton = document.querySelector(".convert-button")
-const currencySelect = document.querySelector(".currency-select")
-const convertFrom = document.querySelector(".convert-from")
+/* Para adicionar moedas ao select de cima será feito o mapeamento de tudo igual é feito para o segundo, irá mapear o select, a imagem da moeda o nome... */
+
+const convertButton = document.querySelector('.convert-button') // mapeia o botão que vai converter
+const segundoSelect = document.querySelector('.segundo-select') // mapeia o segundo select
+const primeiroSelect = document.querySelector('.primeiro-select') // mapeia o primeiro select
+
 
 function convertValues() {
-    const inputCurrencyValue = document.querySelector(".input-currency").value
-    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
-    const currencyValueConverted = document.querySelector(".currency-value")
+  const inputCurrencyValue = document.querySelector('.input-currency').value // mapeia o valor digitado no input
+  const currencyValueToConvert = document.querySelector(
+    '.currency-value-to-convert',
+  ) // mapeia Valor da primeira moeda
+  const currencyValueConverted = document.querySelector('.currency-value') // mapeia o valor da segunda moeda
 
-    const dolarToday = 4.9
-    const euroToday = 5.4
-    const libraToday = 6.3
-    const realToday = 1.0
+  const dolarToday = 5.2
+  const euroToday = 5.37
+  const libraToday = 6.2
+
+  /*Para fazer a conversão precisa satisfazer as duas condições quando o primeiro select for  dolar e o segundo for real  irá converter de dolar para real */
+
+  if (primeiroSelect.value == 'dolar' && segundoSelect.value == 'real') {
+
+    currencyValueConverted.innerHTML = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(inputCurrencyValue * dolarToday)
+
+  }
+
+  /*Quando o primeiro select for real e o segundo for dolar irá converter real para dolar */
+
+  if (segundoSelect.value == 'dolar' && primeiroSelect.value == 'real') {
+    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(inputCurrencyValue / dolarToday)
+
+  }
+
+  if (primeiroSelect.value == 'real' && segundoSelect.value == 'libra') {
+    // formatar número para libra britânica
+    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+    }).format(inputCurrencyValue / libraToday)
+
+  }
+
+  if (segundoSelect.value == 'real' && primeiroSelect.value == 'libra') {
+    // formatar número para euro
+    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-DE', {
+      style: 'currency',
+      currency: 'EUR',
+    }).format(inputCurrencyValue * libraToday)
+
+  }
+
+  if (primeiroSelect.value == 'euro' && segundoSelect.value == 'real') {
+    // formatar número para euro
+    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-DE', {
+      style: 'currency',
+      currency: 'EUR',
+    }).format(inputCurrencyValue * euroToday)
 
 
-    if (currencySelect.value == "dolar") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(inputCurrencyValue / dolarToday)
-    }
+  }
+  if (segundoSelect.value == 'euro' && primeiroSelect.value == 'real') {
+    // formatar número para euro
+    currencyValueConverted.innerHTML = new Intl.NumberFormat('en-DE', {
+      style: 'currency',
+      currency: 'EUR',
+    }).format(inputCurrencyValue / euroToday)
 
-    if (currencySelect.value == "euro") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(inputCurrencyValue / euroToday)
-    }
 
-    if (currencySelect.value == "libra") {
-        currencyValueConverted.innerHTML = new Intl.NumberFormat("en-GB", {
-            style: "currency",
-            currency: "GBP"
-        }).format(inputCurrencyValue / libraToday)
-    }
+  }
 
-    if (currencySelect.value == "real") {
-        currencyValueConverted.innerHTML = Intl.NumberFormat('pt-BR', {
+
+  /*CASO DESEJE CONVERTER DOLAR PARA EURO | EURO PARA DOLAR OU QUALQUER OUTRA MOEDA USAR A MESMA LÓGICA DE CIMA BASTA COPIAR E COLAR E ALTERAR PARA A MOEDA DESEJADA*/
+
+
+  // Essa função é responsável por formatar o texto da moeda do primeiro select, quando for dolar irá colocoar o $ e quando for real R$, para adicionar outras moedas basta copiar e colar e alterar para a moeda que deseja
+  function formatCurrency() {
+
+
+    switch (primeiroSelect.value) {
+      case 'dolar':
+        currencyValueToConvert.innerHTML = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        }).format(inputCurrencyValue);
+
+
+        break;
+      case 'real':
+        currencyValueToConvert.innerHTML = new Intl.NumberFormat('pt-BR', {
+          style: 'currency',
+          currency: 'BRL',
+        }).format(inputCurrencyValue);
+
+
+        break;
+
+        case 'libra':
+          currencyValueToConvert.innerHTML = new Intl.NumberFormat('en-GE', {
             style: 'currency',
-            currency: 'BRL',
-        }). format(inputCurrencyValue * realToday)
+            currency: 'GBP',
+          }).format(inputCurrencyValue);
+
+
+          break;
+
+        case 'euro':
+          currencyValueToConvert.innerHTML = new Intl.NumberFormat('en-DE', {
+            style: 'currency',
+            currency: 'EUR',
+          }).format(inputCurrencyValue);
+
+
+          break;
+
+
+
+
+
+
+
+
+      default:
+        break;
     }
+  }
+  
+  formatCurrency()
 
 
-
-    currencyValueToConvert.innerHTML = new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    }).format(inputCurrencyValue)//
 }
+
+
+
 
 function changeCurrency() {
-    const currencyImg = document.querySelector(".currency-img")
-    const currencyName = document.querySelector("#currency-name")
+  const nomeMoeda2 = document.getElementById('nome-moeda-select-2') // mapeia o nome da segunda moeda
+  const nomeMoeda1 = document.getElementById('nome-moeda-select-1') // mapeia o nome da primeira moeda
+  const currencyImage = document.querySelector('.currency-img') // mapeia a segunda imagem
+  const imagemPrimeiroSelect = document.querySelector('.imagem-primeiro-select') // mapeia a primeira imagem
 
-    if (currencySelect.value == "dolar") {
-        currencyName.innerHTML = "Dólar Americano"
-        currencyImg.src = "./assets/dolar.png"
-    }
 
-    if (currencySelect.value == "euro") {
-        currencyName.innerHTML = "Euro"
-        currencyImg.src = "./assets/euro.png"
-    }
 
-    if (currencySelect.value == "libra") {
-        currencyName.innerHTML = "Libra"
-        currencyImg.src = "./assets/libra.png"
-        
-    }
+  //aqui a condicional precisa ser feita para o primeiro select e para o segundo, assim, irá trocar a imagem e o nome nos dois select
+  if (segundoSelect.value == 'real') {
+    nomeMoeda2.innerHTML = 'Real Brasileiro'
+    currencyImage.src = './assets/brasil 2.png'
+  }
 
-    if (currencySelect.value == "real") {
-        currencyName.innerHTML = "Real"
-        currencyImg.src = "./assets/brasil 2.png"
-    }
+  if (primeiroSelect.value == 'real') {
+    nomeMoeda1.innerHTML = 'Real Brasileiro'
+    imagemPrimeiroSelect.src = './assets/brasil 2.png'
+  }
 
-    convertValues()
+  if (segundoSelect.value == 'dolar') {
+    nomeMoeda2.innerHTML = 'Dólar americano'
+    currencyImage.src = './assets/dolar.png'
+  }
 
+  if (primeiroSelect.value == 'dolar') {
+    nomeMoeda1.innerHTML = 'Dólar americano'
+    imagemPrimeiroSelect.src = './assets/dolar.png'
+  }
+  if (primeiroSelect.value == 'libra') {
+    nomeMoeda1.innerHTML = 'Libra Britânica'
+    imagemPrimeiroSelect.src = './assets/libra.png'
+  }
+  if (segundoSelect.value == 'libra') {
+    nomeMoeda2.innerHTML = 'Libra Britânica'
+    currencyImage.src = './assets/libra.png'
+  }
+  if (primeiroSelect.value == 'euro') {
+    nomeMoeda1.innerHTML = 'Euro'
+    imagemPrimeiroSelect.src = './assets/euro.png'
+  }
+  if (segundoSelect.value == 'euro') {
+    nomeMoeda2.innerHTML = 'Euro'
+    currencyImage.src = './assets/euro.png'
+  }
+
+
+
+  convertValues()
 }
-
-function changeFrom() {
-    const inputCurrencyValue = document.querySelector(".input-currency").value
-    const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
-    const currencyValueConverted = document.querySelector(".currency-value")
-    const firstImage = document.querySelector(".first-img")
-    const currency = document.querySelector(".currency")
-    const dolarToday = 4.9
-    const euroToday = 5.4
-    const libraToday = 6.3
-    const realToday = 1.0
-
-    if (convertFrom.value == "dolar") {
-        currency.innerHTML = "Dólar Americano"
-        firstImage.src = "./assets/dolar.png"
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD"
-        }).format(inputCurrencyValue)
-    }
-
-    if (convertFrom.value == "euro") {
-        currency.innerHTML = "Euro"
-        firstImage.src = "./assets/euro.png"
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("de-DE", {
-            style: "currency",
-            currency: "EUR"
-        }).format(inputCurrencyValue)
-    }
-
-    if (convertFrom.value == "libra") {
-        currency.innerHTML = "Libra"
-        firstImage.src = "./assets/libra.png"
-        currencyValueToConvert.innerHTML = new Intl.NumberFormat("en-GB", {
-            style: "currency",
-            currency: "GBP"
-        }).format(inputCurrencyValue)
-
-    }
-
-    if (convertFrom.value == "real") {
-        currency.innerHTML = "Real"
-        firstImage.src = "./assets/brasil 2.png"
-        currencyValueToConvert.innerHTML = Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-        }). format(inputCurrencyValue)
-        
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-//usamos o innerHTML pra pegar algo do html e dar um novo conteúdo a ele
-
-//TODO ESSE PROJETO ESTÁ DEBAIXO DO CONVERT BUTTON E DA MECÂNICA DE CLICAR
-
-// function changeCurrency() {
-//     const currencyName = document.getElementById("currency-name")
-//     const currencyImg = document.querySelector(".currency-img")
-
-//     if (currencySelect.value == "dolar") {
-//         currencyName.innerHTML = "Dólar americano"
-//         currencyImg.src = "./assets/dolar.png"
-//     }
-//     if (currencySelect.value == "euro") {
-//         currencyName.innerHTML = "Euro"
-//         currencyImg.src = "./assets/euro.png"
-//     }
-//     if (currencySelect.value == "libra") {
-//         currencyName.innerHTML = "Libra"
-//         currencyImg.src = "./assets/libra.png"
-//     }
-
-//     convertValues()
-// }
-
-convertFrom.addEventListener("change", changeFrom)
-currencySelect.addEventListener("change", changeCurrency)
-convertButton.addEventListener("click", convertValues)
-
-// formatar número para libra britânica
-//let Pounds = Intl.NumberFormat('en-GB', {
-//style: 'currency',
-// currency: 'GBP',
-
-
-
+primeiroSelect.addEventListener('change', changeCurrency) // aqui pega o evento de mudança do primeiro select
+segundoSelect.addEventListener('change', changeCurrency) // aqui pega o evento de mudança do segundo select
+convertButton.addEventListener('click', convertValues) //aqui pega o evento de clique do botão.
